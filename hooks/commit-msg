@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# This example catches duplicate Signed-off-by lines.
+# This catches duplicate "Signed-off-by" lines.
 
 test "" = "$(grep '^Signed-off-by: ' "$1" |
 	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
