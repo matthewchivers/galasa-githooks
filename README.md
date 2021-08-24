@@ -42,7 +42,6 @@ This seemed a reasonable starting point, and can be easily changed later.
 The checks are quite harsh, but a lot of them make a lot of sense. The scripts ensure that checkstyle will only be run against the modified / staged files, not on an entire repository.
 
 ## Instructions
-
 There are two repositories talked about in these instructions:
 * Target Repository
     * This is the repository to which you will apply the hooks 
@@ -52,12 +51,12 @@ There are two repositories talked about in these instructions:
 
 Setup should be relatively easy:
 
-Navigate to the _*target*_ repository, and then execute the script `setup.sh` that you'll find in this repository. 
+Navigate to the _*hook*_ repository (where this README is stored), and then execute the script `setup.sh`. 
 
-The script requires one parameter to be passed: the path to the galasa-githooks repository.
+The script requires one parameter to be passed: the path to the target (Galasa) repository.
 
 when running from withing the framework repository, the command may look something like:
 
-`/Users/username/galasa-githooks/setup.sh /Users/username/galasa-githooks`
+`./setup.sh /Users/username/Galasa/framework`
 
 > If you encounter problems running `setup.sh`, make sure it is executable using something like `chmod +x setup.sh`
