@@ -4,15 +4,42 @@ GitHooks for Galasa repositories.
 
 ## Premise
 
-Make local development of Galasa easier, as well as increasing the quality of pull-requests.
+The aim of this project is to make local development of Galasa faster and easier, as well as increase the quality of pull-requests.
 
-For example, by using:
-* Linting
-* Static Analysis
-* Build Success
+Git hooks are customisable scripts that can be triggered when certain actions occur. They can run locally (client side) or remotely (server side). This project is a collection of local git hooks. Client side hooks are triggered by git operations such as committing or merging. 
+
+These hooks can provide value by ensuring staged code builds successfully and passes tests before allowing a commit, or ensuring a commit message is signed by the author. Many other actions exist, such as linting code, ensuring copyright headers are in place, and any other desired (scriptable) action.
+
+### Why this project?
+
+Galasa has a large number of repositories that require similar checks to eachother, and so can utilise the same git hooks. That said, Githooks are infamous for the need to replicate and/or configure across each repository where they are required. The amount of work (and repetition) required to keep githooks up to date across repositories often leads to them becoming outdated, broken, and (ultimately) abandonned and useless.
+
+The aim of this project is to create a set of hooks that can be maintained in a single location whilst ensuring the changes made are pervasive across every repository that requires them.
+
+### How does it work?
+
+1) Create an authoritative source of git hooks / scripts (e.g. this repository)
+2) Link from each repository to the authoritative source (e.g. symlink)
+3) Any change to the authoritative source is pervasive throughout all repositories that link to it.
+
+This method ensures that git repositories themselves need only be set up once (and even this setup can be largely automated). Any further changes to the authoritative source will always be applied to the repository in question because the repository is already linked to the files and directories being changed. Only a truly major change would require work at repository-level (an idempotent setup script could provide update functionality).
+
+### Functionality
+
+The current functionality provided by the scripts in this repository are:
+* Linting 
+    * Uses checkstyle to lint Java source files.
+    * This currently uses a slightly-modified version of the Google Java standards.
+    * The standards chosen probably needs to change, but was a good solution in the time I had.
+* Ensuring copyright headers are correct on `*.java` files
+    * Part of linting, but worth mentioning on its own.
+* Ensuring commits are signed.
+* Ensuring gradle builds pass before allowing a commit.
+
+Future functionality could involve static analysis of code, or enforcing a style for commit messages.
 
 ## Requirements
-> I hope to reduce these requirements over time.
+> These need updating.
 
 Before going ahead with the "instructions" section below, please make sure of the following:
 
