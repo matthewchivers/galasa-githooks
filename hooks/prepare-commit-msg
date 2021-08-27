@@ -4,6 +4,10 @@ COMMIT_MSG_FILE=$1
 COMMIT_SOURCE=$2
 SHA1=$3
 
+# git verify-commit << Should validate the GPG signature created by git commit -S
+# Perhaps a significant improvement over allowing a hook to insert a message...
+# Possibly needs to be placed within the "commit-msg" check rather than prepare-commit-msg << Test first before moving.
+
 # Gets rid of "Please enter the commit message..."
 /usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
 
