@@ -13,6 +13,13 @@ case $REPO in
         echo ""
         PROJ_DIR="$REPO_DIR/galasa-parent"
         ;;
+
+    "managers")
+        echo ""
+        echo "Running hooks for managers repository [galasa-dev/managers]"
+        echo ""
+        PROJ_DIR="$REPO_DIR/galasa-managers-parent"
+        ;;
     
     *)
         echo ""
